@@ -1,39 +1,34 @@
 <template>
-  <div class="container" @click="clickHandle('test click', $event)">
+    <div class="container" @click="clickHandle('test click', $event)">
 
-    <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <div class="userinfo-nickname">
-        <card :text="userInfo.nickName"></card>
-      </div>
+        <user></user>
+
+        <div class="welcome">欢迎使用~</div>
+
+        <a class="usermotto" href="../logo/main">
+            <div class="user-motto">
+                <card :text="motto"></card>
+            </div>
+        </a>
+
+        <a class="description" href="../description/main">使用说明</a>
     </div>
-
-    <div class="usermotto">
-      <div class="user-motto">
-        <card :text="motto"></card>
-      </div>
-    </div>
-
-    <form class="form-container">
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-    </form>
-  </div>
 </template>
 
 <script>
 import card from '@/components/card'
+import user from '@/components/user'
 
 export default {
   data () {
     return {
-      motto: 'Hello World',
-      userInfo: {}
+      motto: '开始使用'
     }
   },
 
   components: {
-    card
+    card,
+    user
   },
 
   methods: {
@@ -59,13 +54,13 @@ export default {
   },
 
   created () {
-    // 调用应用实例的方法获取全局数据
-    this.getUserInfo()
+
   }
 }
+
 </script>
 
-<style scoped>
+<style>
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -83,8 +78,22 @@ export default {
   color: #aaa;
 }
 
+.welcome{
+    margin-top:50px;
+}
 .usermotto {
-  margin-top: 150px;
+    width:200px;
+    height: 70px;
+    color: #fff;
+    text-align: center;
+    line-height:70px;
+    margin-top: 150px;
+    background-color: #2196f3;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    border-radius: 2px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.117647), 0 1px 4px rgba(0,0,0,.117647);
 }
 
 .form-control {
@@ -94,4 +103,8 @@ export default {
   border: 1px solid #ccc;
 }
 
+.description{
+    position: fixed;
+    bottom: 60px;
+}
 </style>

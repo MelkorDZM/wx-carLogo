@@ -6,7 +6,7 @@ export default {
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    console.log('app created and cache logs by setStorageSync')
+    console.log(logs)
   }
 }
 </script>
@@ -18,7 +18,6 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 200rpx 0;
   box-sizing: border-box;
 }
 /* this rule will be remove */
