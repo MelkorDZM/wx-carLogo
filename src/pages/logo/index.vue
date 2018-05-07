@@ -1,43 +1,51 @@
 <template>
-  <div>
-    <ul class="container log-list">
-      <li v-for="(log, index) in logs" :class="{ red: aa }" :key="index" class="log-item">
-        <card :text="(index + 1) + ' . ' + log"></card>
-      </li>
-    </ul>
-  </div>
+    <div class="container">
+        <ul class=" logos-ul">
+            <li v-for="car in logos" class="logos-li">
+                <img :src="car.src" @click="click(car)">
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
-import { formatTime } from '@/utils/index'
-import card from '@/components/card'
+    import {logos} from '@/utils/data'
 
-export default {
-  components: {
-    card
-  },
+    console.log('logos:')
+    console.log(logos)
 
-  data () {
-    return {
-      logs: []
+    export default {
+        components: {},
+        data () {
+            return {
+                logos: logos
+            }
+        },
+        created () {
+
+        },
+        methods: {
+            click () {
+
+            }
+        }
     }
-  },
-
-  created () {
-    const logs = (wx.getStorageSync('logs') || [])
-    this.logs = logs.map(log => formatTime(new Date(log)))
-  }
-}
 </script>
 
-<style>
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
-}
+<style lang="scss" rel="stylesheet/scss" scoped>
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+    }
+    .logos-ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-.log-item {
-  margin: 10rpx;
-}
+    .logos-li{
+        width:33%;
+    }
 </style>

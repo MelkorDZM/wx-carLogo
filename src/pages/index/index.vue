@@ -3,9 +3,7 @@
 
         <user></user>
 
-        <div class="welcome">欢迎使用~</div>
-
-        <a class="usermotto" href="../logo/main">
+        <a class="usermotto" href="/pages/logo/main">
             <div class="user-motto">
                 <card :text="motto"></card>
             </div>
@@ -60,27 +58,9 @@ export default {
 
 </script>
 
-<style>
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+<style lang="scss" rel="stylesheet/scss" scoped>
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
 
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.welcome{
-    margin-top:50px;
-}
 .usermotto {
     width:200px;
     height: 70px;
@@ -106,5 +86,29 @@ export default {
 .description{
     position: fixed;
     bottom: 60px;
+    transform-origin: center center;
+
+    animation-name: shake;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    6% {
+        transform: translate(5px, 0px) rotate(0deg)
+    }
+
+    12% {
+        transform: translate(-5px, 0px) rotate(0deg)
+    }
+
+    26% {
+        transform: translate(0px, 0px) rotate(0deg)
+    }
+
+    0%,100% {
+        transform: translate(0px, 0px) rotate(0deg)
+    }
 }
 </style>
